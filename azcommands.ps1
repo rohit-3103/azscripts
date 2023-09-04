@@ -1,3 +1,6 @@
+https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-rdp
+
+
 # get the powershell version on your machine
 $psversiontable
 
@@ -78,4 +81,31 @@ New-AzVm `
     -OpenPorts 80,3389
 
 #It will ask for Admin and password
-#op: No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.
+#output: No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.
+
+Get-AzVM -ResourceGroupName RohitAug23
+Get-AzVM -Status | Select-object Name, powerstate, autostate
+Get-AzVM -status | where {$_.powerstate -ne "VM Running"}
+
+#VMSS 
+New-AzVmss `
+    -ResourceGroup "myVMSSResourceGroup" `
+    -Name "myScaleSet" `
+    -OrchestrationMode "Flexible" `
+    -Location "East US" `
+    -InstanceCount "2" `
+    -ImageName "Win2019Datacenter" 
+
+#create VM Inage:
+#Get the VM
+#Create a resource group
+#Create a gallery
+#Create an image definition
+#Create an image version
+#Create a VM
+#Share the gallery
+
+
+##Azure VM Image Builder : 
+##Hashicorp's Packer for image building
+
