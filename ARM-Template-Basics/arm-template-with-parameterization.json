@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "prefixname": {
+            "type": "string",
+            "minLength":3,
+            "maxLength":20
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "this will help in assigning location details to the resource"
+            },
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "functions": [],
+    "variables": {
+        "rssname": "[concat(parameters('prefixname'),uniqueString(resourceGroup().ID))]"
+    },
+    "resources": [
+        {
+            "name": "[variables('rssname')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+            "tags": {
+                "displayName": "storageaccount1"
+            },
+            "location": "[parameters('location')]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_LRS"
+            }
+        }
+    ],
+    "outputs": {}
+}
