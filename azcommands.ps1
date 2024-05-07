@@ -72,7 +72,7 @@ New-AzResourceGroup -Name 'myResourceGroup' -Location 'EastUS'
 New-AzVm `
     -ResourceGroupName 'myResourceGroup' `
     -Name 'myVM' `
-    -Location 'East US' `
+    -Location 'EastUS' `
     -Image 'MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest' `
     -VirtualNetworkName 'myVnet' `
     -SubnetName 'mySubnet' `
